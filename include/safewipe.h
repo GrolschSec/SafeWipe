@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/18 23:42:58 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 00:00:59 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ struct s_files
 	t_files	*next;
 };	
 
+/*	--force 		*/
+/* 	--interactive	*/
+/* 	--recursive		*/
+/*	--help			*/
 typedef struct s_options
 {
-	int	f;	/* --force */
-	int	i;	/* --interactive */
-	int	r;	/* --recursive */
-	int	h;	/* --help */
+	int	f;
+	int	i;
+	int	r;
+	int	h;
 }				t_options;
 
 typedef struct s_safewipe
