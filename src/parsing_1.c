@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:58:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:44:41 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:50:16 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	process_flags(char **argv, t_safewipe *srm, int i)
 	{
 		if (!set_option_flag(argv[i][j], srm))
 		{
+			if (!srm->err && !srm->opts.h)
+				option_err(argv[0], argv[i][j]);
 			srm->err = 1;
-			option_err(argv[0], argv[i][j]);
 			return ;
 		}
 		j++;
@@ -49,16 +50,15 @@ void	parse_options(char **argv, t_safewipe *srm)
 	i = 0;
 	while (argv[++i])
 	{
-		if (argv[i][0] == '-')
+		if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0)
 		{
-			if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0)
-			{
-				srm->opts.h = 1;
-				return ;
-			}
-			process_flags(argv, srm, i);
-			if (srm->err)
-				return ;
+			srm->opts.h = 1;
 		}
+	}
+	i = 0;
+	while (argv[++i])
+	{
+		if (argv[i][0] == '-')
+			process_flags(argv, srm, i);
 	}
 }
