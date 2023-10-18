@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:24:08 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:43:21 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_safewipe
 /* MAIN */
 void	print_usage(const char *name);
 /* PARSING_1 */
+int		set_option_flag(char c, t_safewipe *srm);
+void	process_flags(char **argv, t_safewipe *srm, int i);
 void	parse_options(char **argv, t_safewipe *srm);
 /* UTILS_1 */
 size_t	ft_strlen(const char *str);

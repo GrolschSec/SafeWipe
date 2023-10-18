@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 00:47:14 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:26:19 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:30:57 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	display_help(void)
 		"Suppress error messages for missing files.\n", 1);
 	ft_putstr_fd("  -i, --interactive		"
 		"Prompt for each file removal.\n", 1);
-    ft_putstr_fd("  -r, --recursive		"
+	ft_putstr_fd("  -r, --recursive		"
 		"Remove directories and their contents recursively.\n", 1);
-    ft_putstr_fd("  -h, --help			"
+	ft_putstr_fd("  -h, --help			"
 		"Display this help text and exit.\n", 1);
-    ft_putstr_fd("\nNote:\n", 1);
+	ft_putstr_fd("\nNote:\n", 1);
 }

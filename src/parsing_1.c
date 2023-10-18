@@ -6,13 +6,13 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:58:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 00:57:19 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:44:41 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/safewipe.h"
 
-int	parse_single_option(char c, t_safewipe *srm)
+int	set_option_flag(char c, t_safewipe *srm)
 {
 	if (c == 'f')
 		srm->opts.f = 1;
@@ -25,10 +25,26 @@ int	parse_single_option(char c, t_safewipe *srm)
 	return (1);
 }
 
+void	process_flags(char **argv, t_safewipe *srm, int i)
+{
+	int	j;
+
+	j = 1;
+	while (argv[i][j])
+	{
+		if (!set_option_flag(argv[i][j], srm))
+		{
+			srm->err = 1;
+			option_err(argv[0], argv[i][j]);
+			return ;
+		}
+		j++;
+	}
+}
+
 void	parse_options(char **argv, t_safewipe *srm)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (argv[++i])
@@ -40,17 +56,9 @@ void	parse_options(char **argv, t_safewipe *srm)
 				srm->opts.h = 1;
 				return ;
 			}
-			j = 1;
-			while (argv[i][j])
-			{
-				if (!parse_single_option(argv[i][j], srm))
-				{
-					srm->err = 1;
-					option_err(argv[0], argv[i][j]);
-					return ;
-				}
-				j++;
-			}
+			process_flags(argv, srm, i);
+			if (srm->err)
+				return ;
 		}
 	}
 }
