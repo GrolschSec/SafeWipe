@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 00:47:14 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:30:57 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:45:51 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void	display_help(void)
 		"Remove directories and their contents recursively.\n", 1);
 	ft_putstr_fd("  -h, --help			"
 		"Display this help text and exit.\n", 1);
-	ft_putstr_fd("\nNote:\n", 1);
 }
