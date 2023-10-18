@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 00:47:14 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:06:52 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:11:34 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	option_err(char *name, char opt)
 
 void	help_err(char *name)
 {
+	ft_putstr_fd("Try '", 2);
 	ft_putstr_fd(name, 2);
 	ft_putstr_fd(" --help' for more information.\n", 2);
 }

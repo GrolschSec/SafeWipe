@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:00:29 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:08:38 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:10:35 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ void	print_usage(const char *name)
 {
 	if (!name)
 		return ;
-	ft_putstr_fd("Usage: ", 2);
-	ft_putstr_fd(name, 2);
+	ft_putstr_fd("Usage: ", 1);
+	ft_putstr_fd(name, 1);
 	ft_putstr_fd(" [OPTION]... [FILE]...\n"
-		"Remove (using the DoD 5220.22-M standard) the FILE(s).\n\n"
-		"Try '", 2);
+		"Remove (using the DoD 5220.22-M standard) the FILE(s).\n\n", 1);
 }
 
 int	main(int argc, char **argv)
