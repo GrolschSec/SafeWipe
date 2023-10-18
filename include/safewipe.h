@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:07:24 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:24:08 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void	init_srm(t_safewipe *srm);
 /* UTILS 2 */
 void	option_err(char *name, char opt);
 void	help_err(char *name);
+void	display_help(void);
 #endif

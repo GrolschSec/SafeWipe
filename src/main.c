@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:00:29 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:10:35 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:24:20 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 	{
 		init_srm(&srm);
 		parse_options(argv, &srm);
+		if (srm.opts.h)
+			return (print_usage(argv[0]), display_help(), 0);
 		if (srm.err)
 			return (srm.err);
 	}
