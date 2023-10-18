@@ -6,7 +6,7 @@
 #    By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 22:06:20 by rlouvrie          #+#    #+#              #
-#    Updated: 2023/10/18 23:53:06 by rlouvrie         ###   ########.fr        #
+#    Updated: 2023/10/19 00:58:18 by rlouvrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,9 @@ OBJS_DIR = obj/
 
 INCLUDE_DIR = include/
 
-SRCS =	main.c \
-	utils_1.c \
+SRCS =	main.c	\
+	utils_1.c	\
+	utils_2.c	\
 	parsing_1.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))

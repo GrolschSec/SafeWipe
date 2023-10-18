@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:26 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/18 23:53:44 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 00:57:43 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,22 @@ void	ft_putstr_fd(const char *str, int fd)
 	i = -1;
 	while (str[++i])
 		ft_putchar_fd(str[i], fd);
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+		ptr[i++] = c;
+	return (s);
+}
+
+void	init_srm(t_safewipe *srm)
+{
+	srm->err = 0;
+	ft_memset(&srm->opts, 0, sizeof(srm->opts));
 }

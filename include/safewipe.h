@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 00:00:59 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:07:24 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <string.h>
 
 typedef struct s_files	t_files;
 
@@ -40,6 +41,7 @@ typedef struct s_options
 
 typedef struct s_safewipe
 {
+	int			err;
 	t_options	opts;
 	t_files		*files;
 }				t_safewipe;
@@ -47,8 +49,14 @@ typedef struct s_safewipe
 /* MAIN */
 void	print_usage(const char *name);
 /* PARSING_1 */
+void	parse_options(char **argv, t_safewipe *srm);
 /* UTILS_1 */
 size_t	ft_strlen(const char *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(const char *str, int fd);
+void	*ft_memset(void *s, int c, size_t n);
+void	init_srm(t_safewipe *srm);
+/* UTILS 2 */
+void	option_err(char *name, char opt);
+void	help_err(char *name);
 #endif
