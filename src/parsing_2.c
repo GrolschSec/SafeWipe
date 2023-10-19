@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 22:00:29 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:54:38 by rlouvrie         ###   ########.fr       */
+/*   Created: 2023/10/19 14:42:16 by rlouvrie          #+#    #+#             */
+/*   Updated: 2023/10/19 14:52:38 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/safewipe.h"
 
-int	main(int argc, char **argv)
+int is_directory(const char *path)
 {
-	t_safewipe	srm;
+    struct stat statbuf;
 
-	if (argc < 2)
-		return (print_usage(argv[0]), help_err(argv[0]), 1);
-	else
+	if (stat(path, &statbuf) != 0)
+		return (0);
+	return (1);
+}
+
+void	get_rights(t_safewipe *srm)
+{
+	t_files *tmp;
+
+	tmp = srm->files;
+	while (tmp)
 	{
-		init_srm(&srm);
-		parse_options(argv, &srm);
-		if (srm.opts.h)
-			return (print_usage(argv[0]), display_help(), 0);
-		if (srm.err)
-			return (srm.err);
-		parse_files(argv, &srm);
-		printf("%d\n", srm.files->type);
-		exit_clean(&srm);
+		if (is_directory(tmp->name))
+			tmp->type = ISDIR;
+		else
+			tmp->type = ISFILE;
+		if (access(tmp->name, W_OK) == 0)
+			tmp->right = WRITE;
+		else
+			tmp->right = NO;
+		tmp = tmp->next;
 	}
-	return (0);
 }

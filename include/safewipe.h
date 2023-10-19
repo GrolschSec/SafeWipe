@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:15:30 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:55:33 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,30 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <string.h>
+# include <errno.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 
 typedef struct s_files	t_files;
+
+enum e_type
+{
+	NONE,
+	ISDIR,
+	ISFILE
+};
+
+enum e_access 
+{
+	NO,
+	WRITE
+};
 
 struct s_files
 {
 	int		fd;
 	int		type;
+	int		right;
 	char	*name;
 	t_files	*next;
 };	
@@ -52,6 +69,10 @@ int		set_option_flag(char c, t_safewipe *srm);
 void	process_flags(char **argv, t_safewipe *srm, int i);
 void	parse_options(char **argv, t_safewipe *srm);
 void	parse_files(char **argv, t_safewipe *srm);
+int		exist(const char *name);
+/* PARSING_2 */
+void	get_rights(t_safewipe *srm);
+int		is_directory(const char *path);
 /* UTILS_1 */
 size_t	ft_strlen(const char *str);
 void	ft_putchar_fd(char c, int fd);

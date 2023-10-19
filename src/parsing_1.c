@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:58:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:15:41 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:52:03 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,24 @@ void	parse_options(char **argv, t_safewipe *srm)
 	}
 }
 
+int	exist(const char *name)
+{
+	int ret;
+
+	ret = access(name, F_OK);
+	if (ret != 0)
+	{
+		ft_putstr_fd("Safewipe: cannot remove '", 2);
+		ft_putstr_fd(name, 2);
+		ft_putstr_fd("': ", 2);
+		ft_putstr_fd(strerror(errno), 2);
+		ft_putchar_fd('\n', 2);
+		return (0);
+	}
+	else
+		return (1);
+}
+
 void	parse_files(char **argv, t_safewipe *srm)
 {
 	int	i;
@@ -72,10 +90,11 @@ void	parse_files(char **argv, t_safewipe *srm)
 	while (++i)
 	{
 		if (!argv[i])
-			return ;
-		if (argv[i][0] != '-')
+			break ;
+		if (argv[i][0] != '-' && exist(argv[i]))
 			add_files(argv[i], srm);
 		if (srm->err)
 			exit_clean(srm);
 	}
+	get_rights(srm);
 }
