@@ -6,21 +6,11 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:00:29 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:24:20 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 02:02:38 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/safewipe.h"
-
-void	print_usage(const char *name)
-{
-	if (!name)
-		return ;
-	ft_putstr_fd("Usage: ", 1);
-	ft_putstr_fd(name, 1);
-	ft_putstr_fd(" [OPTION]... [FILE]...\n"
-		"Remove (using the DoD 5220.22-M standard) the FILE(s).\n\n", 1);
-}
 
 int	main(int argc, char **argv)
 {
