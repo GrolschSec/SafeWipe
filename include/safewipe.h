@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 02:03:27 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:15:30 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_files	t_files;
 struct s_files
 {
 	int		fd;
+	int		type;
 	char	*name;
 	t_files	*next;
 };	
@@ -50,6 +51,7 @@ typedef struct s_safewipe
 int		set_option_flag(char c, t_safewipe *srm);
 void	process_flags(char **argv, t_safewipe *srm, int i);
 void	parse_options(char **argv, t_safewipe *srm);
+void	parse_files(char **argv, t_safewipe *srm);
 /* UTILS_1 */
 size_t	ft_strlen(const char *str);
 void	ft_putchar_fd(char c, int fd);
@@ -61,4 +63,9 @@ void	option_err(char *name, char opt);
 void	help_err(char *name);
 void	display_help(void);
 void	print_usage(const char *name);
+/* LIST */
+void	add_files(char *name, t_safewipe *srm);
+/* CLEAN */
+void	clean_list(t_files *files);
+void	exit_clean(t_safewipe *srm);
 #endif

@@ -6,7 +6,7 @@
 #    By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 22:06:20 by rlouvrie          #+#    #+#              #
-#    Updated: 2023/10/19 00:58:18 by rlouvrie         ###   ########.fr        #
+#    Updated: 2023/10/19 13:44:38 by rlouvrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = SafeWipe
 CC = cc
 
 C_FLAGS = -Wall -Werror -Wextra
+
+DEBUG_FLAGS = -g -DDEBUG
 
 SRCS_DIR = src/
 
@@ -25,7 +27,9 @@ INCLUDE_DIR = include/
 SRCS =	main.c	\
 	utils_1.c	\
 	utils_2.c	\
-	parsing_1.c
+	parsing_1.c	\
+	clean.c		\
+	list.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
@@ -48,5 +52,9 @@ fclean: clean
 	rm -f $(NAME)
 
 re:	fclean all
+
+debug: C_FLAGS += $(DEBUG_FLAGS)
+
+debug: re
 
 .PHONY: all clean fclean re

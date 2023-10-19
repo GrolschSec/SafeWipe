@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:58:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 01:56:18 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:15:41 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,21 @@ void	parse_options(char **argv, t_safewipe *srm)
 	{
 		if (argv[i][0] == '-')
 			process_flags(argv, srm, i);
+	}
+}
+
+void	parse_files(char **argv, t_safewipe *srm)
+{
+	int	i;
+
+	i = 0;
+	while (++i)
+	{
+		if (!argv[i])
+			return ;
+		if (argv[i][0] != '-')
+			add_files(argv[i], srm);
+		if (srm->err)
+			exit_clean(srm);
 	}
 }

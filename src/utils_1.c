@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:26 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 00:57:43 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:52:48 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	*ft_memset(void *s, int c, size_t n)
 void	init_srm(t_safewipe *srm)
 {
 	srm->err = 0;
+	srm->files = NULL;
 	ft_memset(&srm->opts, 0, sizeof(srm->opts));
 }

@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 22:00:29 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:13:24 by rlouvrie         ###   ########.fr       */
+/*   Created: 2023/10/19 13:17:59 by rlouvrie          #+#    #+#             */
+/*   Updated: 2023/10/19 14:15:13 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/safewipe.h"
 
-int	main(int argc, char **argv)
+void	clean_list(t_files *files)
 {
-	t_safewipe	srm;
+	t_files *tmp;
 
-	if (argc < 2)
-		return (print_usage(argv[0]), help_err(argv[0]), 1);
-	else
+	if (!files)
+		return ;
+	while (files)
 	{
-		init_srm(&srm);
-		parse_options(argv, &srm);
-		if (srm.opts.h)
-			return (print_usage(argv[0]), display_help(), 0);
-		if (srm.err)
-			return (srm.err);
-		parse_files(argv, &srm);
-		printf("%s\n", srm.files->name);
-		clean_list(srm.files);
+		if (files->name)
+			free(files->name);
+		tmp = files->next;
+		free(files);
+		files = tmp;
 	}
-	return (0);
+	return ;
+}
+
+void	exit_clean(t_safewipe *srm)
+{
+	clean_list(srm->files);
+	exit(srm->err);
 }
