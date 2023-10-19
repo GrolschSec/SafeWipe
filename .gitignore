@@ -1,3 +1,4 @@
 obj/
 SafeWipe
 .gdb_history
+.vscode
