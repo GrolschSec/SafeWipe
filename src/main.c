@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:00:29 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:54:38 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:43:41 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(int argc, char **argv)
 		if (srm.err)
 			return (srm.err);
 		parse_files(argv, &srm);
-		printf("%d\n", srm.files->type);
 		exit_clean(&srm);
 	}
 	return (0);

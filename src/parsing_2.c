@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:42:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:52:38 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:42:08 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int is_directory(const char *path)
 
 	if (stat(path, &statbuf) != 0)
 		return (0);
-	return (1);
+	return S_ISDIR(statbuf.st_mode);
 }
 
 void	get_rights(t_safewipe *srm)
