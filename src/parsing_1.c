@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:58:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:52:03 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:10:41 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,7 @@ int	exist(const char *name)
 
 	ret = access(name, F_OK);
 	if (ret != 0)
-	{
-		ft_putstr_fd("Safewipe: cannot remove '", 2);
-		ft_putstr_fd(name, 2);
-		ft_putstr_fd("': ", 2);
-		ft_putstr_fd(strerror(errno), 2);
-		ft_putchar_fd('\n', 2);
-		return (0);
-	}
+		return (ft_error(name), 0);
 	else
 		return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:42:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 16:42:08 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:26:20 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int is_directory(const char *path)
 {
     struct stat statbuf;
 
+	ft_memset(&statbuf, 0, sizeof(statbuf));
 	if (stat(path, &statbuf) != 0)
 		return (0);
 	return S_ISDIR(statbuf.st_mode);

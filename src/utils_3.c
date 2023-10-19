@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 13:17:59 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 17:19:08 by rlouvrie         ###   ########.fr       */
+/*   Created: 2023/10/19 17:09:00 by rlouvrie          #+#    #+#             */
+/*   Updated: 2023/10/19 17:12:44 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/safewipe.h"
 
-void	clean_list(t_files *files)
+void	ft_error(const char *name)
 {
-	t_files *tmp;
-
-	if (!files)
-		return ;
-	while (files)
-	{
-		if (files->name)
-			free(files->name);
-		if (files->fd != -1)
-			close(files->fd);
-		tmp = files->next;
-		free(files);
-		files = tmp;
-	}
-	return ;
-}
-
-void	exit_clean(t_safewipe *srm)
-{
-	clean_list(srm->files);
-	exit(srm->err);
+	ft_putstr_fd("Safewipe: cannot remove '", 2);
+	ft_putstr_fd(name, 2);
+	ft_putstr_fd("': ", 2);
+	ft_putstr_fd(strerror(errno), 2);
+	ft_putchar_fd('\n', 2);
 }

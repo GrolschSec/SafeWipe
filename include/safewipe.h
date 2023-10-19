@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:55:33 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:39:58 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ enum e_access
 
 struct s_files
 {
-	int		fd;
-	int		type;
-	int		right;
-	char	*name;
-	t_files	*next;
+	int			err;
+	struct stat	st;
+	int			fd;
+	int			type;
+	int			right;
+	char		*name;
+	t_files		*next;
 };	
 
 /*	--force 		*/
@@ -84,9 +86,17 @@ void	option_err(char *name, char opt);
 void	help_err(char *name);
 void	display_help(void);
 void	print_usage(const char *name);
+/* UTILS_3 */
+void	ft_error(const char *name);
 /* LIST */
 void	add_files(char *name, t_safewipe *srm);
 /* CLEAN */
 void	clean_list(t_files *files);
 void	exit_clean(t_safewipe *srm);
+/* WRITE */
+void	rewrite_files(t_safewipe *srm);
+void	open_file(t_files *file);
+void	write_random_buff(t_files *file);
+void	write_pass(t_files *file, unsigned char value);
+void	wipe_file(t_files *file);
 #endif
