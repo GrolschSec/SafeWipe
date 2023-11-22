@@ -6,13 +6,13 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:58:16 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 17:10:41 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:46:26 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/safewipe.h"
 
-int	set_option_flag(char c, t_safewipe *srm)
+int set_option_flag(char c, t_safewipe *srm)
 {
 	if (c == 'f')
 		srm->opts.f = 1;
@@ -25,9 +25,9 @@ int	set_option_flag(char c, t_safewipe *srm)
 	return (1);
 }
 
-void	process_flags(char **argv, t_safewipe *srm, int i)
+void process_flags(char **argv, t_safewipe *srm, int i)
 {
-	int	j;
+	int j;
 
 	j = 1;
 	while (argv[i][j])
@@ -37,15 +37,15 @@ void	process_flags(char **argv, t_safewipe *srm, int i)
 			if (!srm->err && !srm->opts.h)
 				option_err(argv[0], argv[i][j]);
 			srm->err = 1;
-			return ;
+			return;
 		}
 		j++;
 	}
 }
 
-void	parse_options(char **argv, t_safewipe *srm)
+void parse_options(char **argv, t_safewipe *srm)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (argv[++i])
@@ -53,7 +53,7 @@ void	parse_options(char **argv, t_safewipe *srm)
 		if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0)
 		{
 			srm->opts.h = 1;
-			return ;
+			return;
 		}
 	}
 	i = 0;
@@ -64,7 +64,7 @@ void	parse_options(char **argv, t_safewipe *srm)
 	}
 }
 
-int	exist(const char *name)
+int exist(const char *name)
 {
 	int ret;
 
@@ -75,19 +75,24 @@ int	exist(const char *name)
 		return (1);
 }
 
-void	parse_files(char **argv, t_safewipe *srm)
+void parse_files(char **argv, t_safewipe *srm)
 {
-	int	i;
+	int		i;
 
+	srm->name = strdup(argv[0]);
+	if (!srm->name)
+		exit_clean(srm);
 	i = 0;
 	while (++i)
 	{
 		if (!argv[i])
-			break ;
+			break;
 		if (argv[i][0] != '-' && exist(argv[i]))
 			add_files(argv[i], srm);
 		if (srm->err)
 			exit_clean(srm);
 	}
 	get_rights(srm);
+	//if (srm->opts.r)
+	//	parse_recursive("./", srm);
 }

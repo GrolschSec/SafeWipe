@@ -6,7 +6,7 @@
 /*   By: rlouvrie <rlouvrie@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:04:21 by rlouvrie          #+#    #+#             */
-/*   Updated: 2023/10/19 17:39:58 by rlouvrie         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:42:52 by rlouvrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <errno.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <dirent.h>
 
 typedef struct s_files	t_files;
 
@@ -61,6 +62,7 @@ typedef struct s_options
 
 typedef struct s_safewipe
 {
+	char		*name;
 	int			err;
 	t_options	opts;
 	t_files		*files;
